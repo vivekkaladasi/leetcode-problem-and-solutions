@@ -1,0 +1,24 @@
+
+class Solution {
+public:
+    int appendCharacters(string s, string t) {
+        int m = s.size(); // Length of string s
+        int n = t.size(); // Length of string t
+      
+        // Initialize pointers for strings s (i) and t (j)
+        for (int i = 0, j = 0; j < n; ++j) {
+            // Increment i until we find a matching character in s for t[j]
+            while (i < m && s[i] != t[j]) {
+                ++i;
+            }
+            // If we reach the end of s, return how many characters to append from t
+            if (i == m) {
+                return n - j;
+            }
+            // Move to the next character in s
+            i++;
+        }
+        // If all characters of t are found in s in order, no need to append any character
+        return 0;
+    }
+};
